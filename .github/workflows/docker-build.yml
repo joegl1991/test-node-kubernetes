@@ -1,0 +1,21 @@
+name: Docker Build Test Node Kubernetes
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build the Docker image
+        run: docker build -t joegl1991/test-node-kubernetes .
+
+      - name: List images
+        run: docker images joegl1991/test-node-kubernetes
